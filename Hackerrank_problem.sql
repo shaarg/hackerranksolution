@@ -44,13 +44,14 @@ END FROM TRIANGLES;
 
 -- Query an alphabetically ordered list of all names in OCCUPATIONS, immediately followed by the first letter of each profession as a parenthetical (i.e.: enclosed in parentheses). For example: AnActorName(A), ADoctorName(D), AProfessorName(P), and ASingerName(S).
 -- Query the number of ocurrences of each occupation in OCCUPATIONS. Sort the occurrences in ascending order, and output them in the following format:
-select concat(name,'(',LEFT(occupation,1),')') as modify_name 
+select concat(name,'(',LEFT(occupation,1),')') as mod_name 
 from occupations 
 union 
-select concat('There are a total of ',count(*),' ', lower(occupation),'s.') as occupation_count 
+select concat('There are a total of ',count(*),' ', lower(occupation),'s.') as op_count 
 from occupations 
-group by occupation order by modify_name
+group by occupation order by mod_name
 
+ 
 -- PIVOT TABLES
 drop table if exists orders;
 CREATE TABLE orders(order_id integer,date date,cust_id integer,amount integer); 
